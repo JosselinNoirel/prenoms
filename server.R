@@ -11,7 +11,7 @@ library('shiny')
 library('rio')
 library('tidyverse')
 library('glue')
-library('scales')
+# library('scales')
 
 theme_set(theme_bw())
 
