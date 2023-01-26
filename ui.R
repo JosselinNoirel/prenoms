@@ -7,13 +7,13 @@
 #    http://shiny.rstudio.com/
 #
 
-library(shiny)
+library('shiny')
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
 
     # Application title
-    titlePanel("Fréquence des prénoms au cours du temps (1900-2020)"),
+    titlePanel("Fréquence des prénoms au cours du temps (1900-2021)"),
 
     # Sidebar with a slider input for number of bins
     sidebarLayout(
@@ -25,8 +25,8 @@ shinyUI(fluidPage(
         # Show a plot of the generated distribution
         mainPanel(
             plotOutput("plot"),
-            p('(1) les fréquences sont calculées parmi les enfants de même sexe.'),
             tableOutput('stats'),
+            p('(1) les fréquences sont calculées parmi les enfants de même sexe.'),
             p('(2) les fréquences et les rangs sont calculés parmi les enfants de même sexe.'),
             p('(3) les fréquences sont données en pour mille.'),
         )

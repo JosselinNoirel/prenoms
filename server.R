@@ -15,7 +15,7 @@ library('glue')
 
 theme_set(theme_bw())
 
-furl = 'https://www.insee.fr/fr/statistiques/fichier/2540004/nat2020_csv.zip'
+furl = 'https://www.insee.fr/fr/statistiques/fichier/2540004/nat2021_csv.zip'
 dat = rio::import(furl)
 
 dat = dat %>% rename(sex=sexe, name=preusuel, year=annais, frequency=nombre)
@@ -41,7 +41,7 @@ shinyServer(function (input, output) {
             xlab('Year') +
             ylab('Occurrences / 1000') +
             ylim(0, NA) +
-            xlim(1899, 2021) +
+            xlim(1899, 2024) +
             labs(colour='Names') +
             ggtitle(glue('Frequency of {input$list}'))
     })
@@ -51,7 +51,7 @@ shinyServer(function (input, output) {
         name_list = str_replace(name_list, ':\\s+', ':')
 
         dat %>% drop_na() %>%
-            filter(year == 2020) %>%
+            # filter(year == 2020) %>%
             group_by(sex) %>%
             mutate(rfreq=1000 * frequency/sum(frequency),
                    rank=as.integer(rank(-frequency))) %>%
